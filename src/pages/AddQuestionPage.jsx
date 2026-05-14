@@ -106,14 +106,14 @@ function AddQuestionPage() {
             <Button
               type="button"
               onClick={() => navigate("/")}
-              className="h-12 bg-transparent text-black font-normal px-6"
+              className="h-12 bg-transparent text-black font-normal px-6 cursor-pointer"
             >
               Cancel
             </Button>
 
             <Button
               onClick={handleSaveQuestion}
-              className="h-12 rounded-xl px-6"
+              className="h-12 rounded-xl px-6 cursor-pointer"
             >
               Save Question
             </Button>

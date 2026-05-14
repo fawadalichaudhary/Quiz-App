@@ -27,7 +27,7 @@ function MainPage() {
 
                         <Button onClick={() => navigate("/quizpage")}
                             disabled={questions.length == 0}
-                            className="h-11 flex px-6 py-3 font-normal bg-black text-white rounded-xl"
+                            className="h-11 flex px-6 py-3 font-normal bg-black text-white rounded-xl cursor-pointer"
                         >
                             <Play />
                             Start quiz
@@ -35,7 +35,7 @@ function MainPage() {
                         <Button
                             onClick={removeQuestions}
                             disabled={questions.length == 0}
-                            className="bg-white text-black hover:bg-gray-500"
+                            className="bg-white text-black hover:bg-gray-500 cursor-pointer"
                         >
                             Clear All
                         </Button>

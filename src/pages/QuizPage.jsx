@@ -55,7 +55,7 @@ function QuizPage() {
                     <div className="flex text-gray-500 font-semibold">
                         Question    {currentIndex + 1}/{questions.length}
                     </div>
-                    <Button className="text-gray-500 bg-white"
+                    <Button className="text-gray-500 bg-white cursor-pointer"
                         onClick={() => navigate("/")}>
                         Exit
                     </Button>
@@ -89,6 +89,7 @@ function QuizPage() {
                 <div className="mt-6 flex justify-end gap-3">
                     {currentIndex < questions.length - 1 ? (
                         <Button onClick={handleNext}
+                            className="cursor-pointer"
                             disabled={selectedOption === null}>
                             Next
                         </Button>
@@ -96,7 +97,7 @@ function QuizPage() {
                         <Button
                             disabled={selectedOption === null}
                             onClick={() => navigate("/resultspage")}
-                            className="bg-black text-white font-normal p-2 rounded-lg"
+                            className="bg-black text-white font-normal p-2 rounded-lg cursor-pointer"
                         >
                             End Quiz
                         </Button>

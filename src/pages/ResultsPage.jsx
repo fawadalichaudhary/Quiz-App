@@ -33,10 +33,14 @@ function ResultsPage() {
                 </div>
 
                 <div className="flex gap-3 justify-center mt-4">
-                    <Button onClick={() => navigate("/quizpage")} >
+                    <Button onClick={() => navigate("/quizpage")}
+                        className="cursor-pointer"
+                    >
                         Retake quiz
                     </Button>
-                    <Button onClick={() => navigate("/")}>
+                    <Button onClick={() => navigate("/")}
+                        className="cursor-pointer"
+                    >
                         Back to home
                     </Button>
                 </div>
