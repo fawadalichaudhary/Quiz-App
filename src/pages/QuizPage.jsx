@@ -55,7 +55,8 @@ function QuizPage() {
                     <div className="flex text-gray-500 font-semibold">
                         Question    {currentIndex + 1}/{questions.length}
                     </div>
-                    <Button className="text-gray-500 bg-white">
+                    <Button className="text-gray-500 bg-white"
+                        onClick={() => navigate("/")}>
                         Exit
                     </Button>
                 </div>
