@@ -41,12 +41,11 @@ function ResultsPage() {
 
                 <div className="flex gap-3 justify-center mt-10">
                     <Button onClick={() => navigate("/quizpage")}
-                        className="cursor-pointer"
                     >
                         Retake quiz
                     </Button>
                     <Button onClick={() => navigate("/")}
-                        className="cursor-pointer bg-gray-50 hover:bg-gray-200 text-black"
+                        variant="ghost"
                     >
                         Back to home
                     </Button>
