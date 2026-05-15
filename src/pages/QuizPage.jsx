@@ -49,7 +49,7 @@ function QuizPage() {
 
     return (
         <div className="px-4 py-10">
-            <div className="mt-10 rounded-2xl border border-slate-200 mx-auto p-8 shadow-sm max-w-5xl">
+            <div className="mt-10  mx-auto p-8 max-w-5xl">
                 <div className="mb-6 flex items-center justify-between">
 
                     <div className="flex text-gray-500 font-semibold">
@@ -60,48 +60,50 @@ function QuizPage() {
                         Exit
                     </Button>
                 </div>
-
-                <h3 className="text-xl font-semibold text-slate-900">
-                    {currentQuestion.question}
-                </h3>
-                <div className="mt-6 space-y-3">
-                    {currentQuestion.options.map((option, index) => {
-                        let bg = "bg-gray-100"
-                        if (showResult) {
-                            if (option.isCorrect) {
-                                bg = "bg-green-200 text-green-800"
-                            } else if (selectedOption === index) {
-                                bg = "bg-red-200 text-red-800"
+                <div className="border-2 shadow-sm p-5 rounded-xl">
+                    <h3 className="text-xl font-semibold text-slate-900">
+                        {currentQuestion.question}
+                    </h3>
+                    <div className="mt-6 space-y-2">
+                        {currentQuestion.options.map((option, index) => {
+                            let bg = "bg-white"
+                            if (showResult) {
+                                if (option.isCorrect) {
+                                    bg = "bg-green-200 text-green-800"
+                                } else if (selectedOption === index) {
+                                    bg = "bg-red-200 text-red-800"
+                                }
                             }
-                        }
 
-                        return (
-                            <div
-                                key={index}
-                                onClick={() => handleOptionClick(index)}
-                                className={`cursor-pointer rounded-xl px-4 py-3 text-sm transition ${bg}`}
+                            return (
+                                <div
+                                    key={index}
+                                    onClick={() => handleOptionClick(index)}
+                                    className={`cursor-pointer border-2 rounded-lg px-4 py-3 text-sm transition ${bg}`}
+                                >
+                                    {option.text}
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="mt-4 flex justify-end gap-3">
+                        {currentIndex < questions.length - 1 ? (
+                            <Button onClick={handleNext}
+                                className="cursor-pointer"
+                                disabled={selectedOption === null}>
+                                Next
+                            </Button>
+                        ) : (
+                            <Button
+                                disabled={selectedOption === null}
+                                onClick={() => navigate("/resultspage")}
+                                className="bg-black text-white font-normal p-2 rounded-lg cursor-pointer"
                             >
-                                {option.text}
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="mt-6 flex justify-end gap-3">
-                    {currentIndex < questions.length - 1 ? (
-                        <Button onClick={handleNext}
-                            className="cursor-pointer"
-                            disabled={selectedOption === null}>
-                            Next
-                        </Button>
-                    ) : (
-                        <Button
-                            disabled={selectedOption === null}
-                            onClick={() => navigate("/resultspage")}
-                            className="bg-black text-white font-normal p-2 rounded-lg cursor-pointer"
-                        >
-                            End Quiz
-                        </Button>
-                    )}
+                                End Quiz
+                            </Button>
+                        )}
+                    </div>
+
                 </div>
             </div>
         </div>

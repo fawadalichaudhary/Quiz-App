@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { useQuiz } from "@/context/QuizContext"
 
 function AddQuestionPage() {
-  const { questions, addQuestion } = useQuiz()
+  const { addQuestion } = useQuiz()
 
   const navigate = useNavigate()
 
@@ -22,9 +22,8 @@ function AddQuestionPage() {
 
   const handleSaveQuestion = (e) => {
     e.preventDefault()
-
-    if (!question.trim() || correctAnswer === null || options.some((option) => !option.trim())) {
-      alert("Please enter complete information")
+    if (options.some((option) => !option.trim())) {
+      alert("Empty Option")
       return
     }
 
@@ -46,15 +45,13 @@ function AddQuestionPage() {
   return (
     <div className="px-4 py-10">
       <div className="mx-auto max-w-4xl">
-        <form className="rounded-3xl border border-slate-200 p-8 shadow-sm">
-          <div className="flex justify-between">
+        <form className="rounded-3xl border border-slate-200 p-8 shadow-sm"
+          onSubmit={handleSaveQuestion}
+        >
+          <div className="flex">
             <h2 className="text-3xl font-semibold">
               Add a Question
             </h2>
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 font-semibold">
-              {questions.length}
-            </div>
           </div>
 
           <div className="my-5">
@@ -96,23 +93,23 @@ function AddQuestionPage() {
                     handleOptionChange(e.target.value, index)
                   }
                   placeholder={`Option ${index + 1}`}
-                  className="h-14 rounded-xl"
+                  className="h-12 rounded-xl"
                 />
               </div>
             ))}
           </RadioGroup>
 
-          <div className="mt-10 flex justify-end">
+          <div className="mt-7 flex justify-end items-center gap-3">
             <Button
               type="button"
               onClick={() => navigate("/")}
-              className="h-12 bg-transparent text-black font-normal px-6 cursor-pointer"
+              variant="ghost"
             >
               Cancel
             </Button>
 
             <Button
-              onClick={handleSaveQuestion}
+              type="submit"
               className="h-12 rounded-xl px-6 cursor-pointer"
             >
               Save Question

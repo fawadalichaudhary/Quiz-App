@@ -8,7 +8,9 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <MainPage />
+      element: <MainPage />,
+      Component: MainPage
+
     },
     {
       path: "/addquestions",
